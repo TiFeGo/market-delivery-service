@@ -6,6 +6,8 @@ services:
     build: .
     ports:
       - "8004:8000"
+    networks:
+      - microservice-network
 
   delivery_mongodb:
     container_name: mob-mongo
@@ -15,8 +17,10 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
+    networks:
+      - microservice-network
 
 networks:
-  network:
+  microservice-network:
     name: microservices
     external: true
