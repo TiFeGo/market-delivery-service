@@ -36,7 +36,7 @@ async def startup():
     tracing_tools.init_tracer()
     connect(
         host=f'mongodb://{settings.DATABASE_USERNAME}:{settings.DATABASE_PASSWORD}@{settings.DATABASE_HOST}:{settings.DATABASE_PORT}/{settings.DATABASE_NAME}?authSource={settings.DATABASE_USERNAME}')
-    connection = await aio_pika.connect("amqp://guest:guest@192.168.0.111:5672/")
+    connection = await aio_pika.connect(settings.RABBIT_URL)
     channel = await connection.channel()
 
     queue = await channel.declare_queue("fastapi_task")

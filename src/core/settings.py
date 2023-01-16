@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     DATABASE_HOST: str
     DATABASE_NAME: str
     DATABASE_PORT: str
-
+    RABBIT_URL: str
     TEST_DATABASE_NAME: str
 
     @classmethod
