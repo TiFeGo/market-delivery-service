@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+  delivery_service:
+    build: .
+    ports:
+      - "8004:8000"
+
+  delivery_mongodb:
+    container_name: mob-mongo
+    image: mongo:4.4.6
+    volumes:
+      - ./apps/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+
+networks:
+  network:
+    name: microservices
+    external: true
